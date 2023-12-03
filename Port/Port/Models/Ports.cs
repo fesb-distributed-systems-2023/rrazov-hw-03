@@ -16,13 +16,13 @@
 
 namespace Port.Models
 {
-    public class Port
+    public class Ports
     {
         public int Id { get; set; }
 
-        public string? PortName { get; set; }
+        public string PortName { get; set; }
 
-        public string? DestinationName { get; set; }
+        public string DestinationName { get; set; }
 
         public int TicketPrice { get; set; }
 
