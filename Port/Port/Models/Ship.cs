@@ -16,7 +16,7 @@
 
 namespace Port.Models
 {
-    public class Ports
+    public class Ship
     {
         public int Id { get; set; }
 

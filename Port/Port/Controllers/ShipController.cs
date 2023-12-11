@@ -24,23 +24,23 @@ namespace Port.Controllers
 {
     
     [ApiController]
-    public class PortController : ControllerBase
+    public class ShipController : ControllerBase
     {
-        private readonly PortRepository _portRepository;
+        private readonly ShipRepository _shipRepository;
 
-        public PortController(PortRepository portRepository)
+        public ShipController(ShipRepository shipRepository)
         {
-            _portRepository = portRepository;
+            _shipRepository = shipRepository;
         }
 
-        [HttpPost("/ports/new")]
-        public IActionResult CreateNewPort([FromBody] Ports port) 
+        [HttpPost("/ship/new")]
+        public IActionResult CreateNewShip([FromBody] Ship ship) 
         {
-            bool fSuccess = _portRepository.CreateNewPort(port);
+            bool fSuccess = _shipRepository.CreateNewShip(ship);
 
             if(fSuccess) 
             {
-                return Ok("New port created");
+                return Ok("New ship created");
             }
             else 
             {
@@ -48,37 +48,37 @@ namespace Port.Controllers
             }
         }
 
-        [HttpGet("/ports/all")]
-        public IActionResult GetAllPort() 
+        [HttpGet("/ship/all")]
+        public IActionResult GetAllShips() 
         {
-            return Ok(_portRepository.GetAllPorts());   
+            return Ok(_shipRepository.GetAllShips());   
         }
 
-        [HttpGet("/ports/{id}")]
+        [HttpGet("/ship/{id}")]
         public IActionResult GetPortById([FromRoute] int id) 
         {
-            var port = _portRepository.GetPortById(id);
+            var ship = _shipRepository.GetShipById(id);
 
-            if(port is null) 
+            if(ship is null) 
             {
-                return NotFound($"Port with id:{id} doesn't esxist");
+                return NotFound($"Ship with id:{id} doesn't esxist");
             }
             else
             {
-                return Ok(port);
+                return Ok(ship);
             }
         }
 
-        [HttpDelete("/ports/{id}")]
+        [HttpDelete("/ship/{id}")]
         public IActionResult DeletePort([FromRoute]int id) 
         {
-            if(_portRepository.DeletePort(id))
+            if(_shipRepository.DeleteShip(id))
             {
-                return Ok($"Deleted port with id={id}!");
+                return Ok($"Deleted ship with id={id}!");
             }
             else
             {
-                return NotFound($"Could not find port with id={id}");
+                return NotFound($"Could not find ship with id={id}");
             }
         }
     }
