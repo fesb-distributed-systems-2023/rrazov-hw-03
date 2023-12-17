@@ -1,0 +1,11 @@
+CREATE TABLE "Ships" (
+	"Id"	INTEGER NOT NULL UNIQUE,
+	"ShipName"	TEXT,
+	"PortName"	TEXT,
+	"DestinationName"	TEXT,
+	"TicketPrice"	INTEGER,
+	"DepartureTime"	INTEGER,
+	"ArrivalTime"	INTEGER,
+	"DepartureStatus"	TEXT,
+	PRIMARY KEY("Id" AUTOINCREMENT)
+);
