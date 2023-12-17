@@ -55,7 +55,7 @@ namespace Port.Controllers
         }
 
         [HttpGet("/ship/{id}")]
-        public IActionResult GetPortById([FromRoute] int id) 
+        public IActionResult GetShipById([FromRoute] int id) 
         {
             var ship = _shipRepository.GetShipById(id);
 
@@ -70,7 +70,7 @@ namespace Port.Controllers
         }
 
         [HttpDelete("/ship/{id}")]
-        public IActionResult DeletePort([FromRoute]int id) 
+        public IActionResult DeleteShip([FromRoute]int id) 
         {
             if(_shipRepository.DeleteShip(id))
             {

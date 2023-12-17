@@ -20,6 +20,8 @@ namespace Port.Models
     {
         public int Id { get; set; }
 
+        public string ShipName { get; set; }
+
         public string PortName { get; set; }
 
         public string DestinationName { get; set; }
