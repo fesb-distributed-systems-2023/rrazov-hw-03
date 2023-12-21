@@ -26,9 +26,9 @@ namespace Port.Controllers
     [ApiController]
     public class ShipController : ControllerBase
     {
-        private readonly ShipRepository _shipRepository;
+        private readonly IShipRepository _shipRepository;
 
-        public ShipController(ShipRepository shipRepository)
+        public ShipController(IShipRepository shipRepository)
         {
             _shipRepository = shipRepository;
         }

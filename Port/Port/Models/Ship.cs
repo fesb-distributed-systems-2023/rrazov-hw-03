@@ -18,7 +18,7 @@ namespace Port.Models
 {
     public class Ship
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         public string ShipName { get; set; }
 

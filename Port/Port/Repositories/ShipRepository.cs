@@ -21,12 +21,12 @@ using Port.Models;
 
 namespace Port.Repositories
 {
-    public class ShipRepository
+    public class ShipRepository : IShipRepository
     {
         private List<Ship> m_lstShip;
-        public ShipRepository() 
+        public ShipRepository()
         {
-            m_lstShip = new List<Ship>();   
+            m_lstShip = new List<Ship>();
         }
 
         public bool CreateNewShip(Ship ship)
@@ -36,26 +36,26 @@ namespace Port.Repositories
             return true;
         }
 
-        public IEnumerable<Ship> GetAllShips() 
+        public List<Ship> GetAllShips()
         {
             return m_lstShip;
         }
 
-        public Ship GetShipById(int id) 
+        public Ship GetShipById(int id)
         {
-            if(!m_lstShip.Any(ship => ship.Id == id))
+            if (!m_lstShip.Any(ship => ship.ID == id))
             {
                 return null;
             }
-            var ship = m_lstShip.FirstOrDefault(ship => ship.Id == id);
+            var ship = m_lstShip.FirstOrDefault(ship => ship.ID == id);
 
             return ship;
         }
 
-        public bool DeleteShip(int id) 
+        public bool DeleteShip(int id)
         {
-            var itemToDelete = m_lstShip.FirstOrDefault(itemPort => itemPort.Id == id);
-            if (itemToDelete == null) 
+            var itemToDelete = m_lstShip.FirstOrDefault(itemPort => itemPort.ID == id);
+            if (itemToDelete == null)
             {
                 return false;
             }
