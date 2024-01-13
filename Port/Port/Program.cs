@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ShipRepository>();
+builder.Services.AddSingleton<IShipRepository, ShipRepository_SQL>();
 
 var app = builder.Build();
 
