@@ -1,6 +1,0 @@
-INSERT INTO Ships (ShipName,PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus)
-VALUES ('Zadar','Rijeka', 'Krk', '30', '7:30', '10:00', 'Boarding')
-INSERT INTO Ships (ShipName,PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus)
-VALUES ('Petar Hektorović','Split', 'Vis', '25', '8:00', '11:00', 'Boarding')
-INSERT INTO Ships (ShipName,PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus)
-VALUES ('Juraj Dalmatinac','Split', 'Brač', '15', '10:30', '11:30', 'Boarding')

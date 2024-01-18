@@ -1,4 +1,7 @@
 using Port.Repositories;
+using Port.Logic;
+using Microsoft.Extensions.Configuration;
+using Port.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IShipLogic, ShipLogic>();
 builder.Services.AddSingleton<IShipRepository, ShipRepository_SQL>();
+
+builder.Services.Configure<ValidationConfiguration>(builder.Configuration.GetSection("Validation"));
+builder.Services.Configure<DBConfiguration>(builder.Configuration.GetSection("Database"));
 
 var app = builder.Build();
 

@@ -19,11 +19,22 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Port.Models;
 using Port.Repositories;
+using Port.Filters;
+using Port.Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Port.Controllers.DTO;
+using Microsoft.AspNetCore.Http;
+
+
+
 
 namespace Port.Controllers
 {
-    
+    [ErrorFilter]
     [ApiController]
+    [Route("api/[controller]")]
     public class ShipController : ControllerBase
     {
         private readonly IShipRepository _shipRepository;

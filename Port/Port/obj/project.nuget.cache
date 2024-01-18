@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "NpUUwaT20ydfDbvnJ/G4XBQDGPu3Brf0ITFnkaCpf0pYbjB2b6buOiqo6PCFuaSUHwMeHOvaJ/jjPf42e3JZhw==",
+  "dgSpecHash": "pBQeUvH4FIpdsWs9o61UrvyPK6xEXAM8Ewn5osvnuYmnQ//h95VlU+57H1fkmdCq6DMSvQ2z5YFAMAMUtqZFeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ROKO\\OneDrive - Fakultet elektrotehnike, strojarstva i brodogradnje\\Desktop\\FAKS\\DIS labovi\\rrazov-hw-03\\Port\\Port\\Port.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ROKO\\.nuget\\packages\\greenpipes\\4.0.1\\greenpipes.4.0.1.nupkg.sha512",
+    "C:\\Users\\ROKO\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ROKO\\.nuget\\packages\\microsoft.data.sqlite\\8.0.0\\microsoft.data.sqlite.8.0.0.nupkg.sha512",
     "C:\\Users\\ROKO\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.0\\microsoft.data.sqlite.core.8.0.0.nupkg.sha512",
     "C:\\Users\\ROKO\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
@@ -16,7 +18,8 @@
     "C:\\Users\\ROKO\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
     "C:\\Users\\ROKO\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
     "C:\\Users\\ROKO\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
-    "C:\\Users\\ROKO\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\ROKO\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\ROKO\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

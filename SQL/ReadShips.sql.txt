@@ -1,1 +1,0 @@
-SELECT Id, ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus FROM Ships WHERE PortName='Zadar';
