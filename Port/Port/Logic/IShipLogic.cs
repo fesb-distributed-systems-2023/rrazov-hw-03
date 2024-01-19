@@ -7,7 +7,7 @@ namespace Port.Logic
         public void AddNewShip(Ship ship);
         public void RemoveShip(int id);
         public Ship? GetShipById(int id);
-        public IEnumerable<Ship> GetEmails();
+        public IEnumerable<Ship> GetShips();
 
 
 

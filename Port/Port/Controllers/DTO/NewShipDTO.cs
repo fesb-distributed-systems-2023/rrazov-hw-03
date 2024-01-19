@@ -33,7 +33,7 @@ namespace Port.Controllers.DTO
                 DepartureTime = DepartureTime,
                 ArrivalTime = ArrivalTime,
                 DepartureStatus = DepartureStatus,
-                Timestamp = DateTime.MinValue
+                TimeStamp = DateTime.MinValue
             };
         }
     }

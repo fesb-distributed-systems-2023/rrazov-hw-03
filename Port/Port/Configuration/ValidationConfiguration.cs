@@ -3,7 +3,7 @@
     public class ValidationConfiguration
     {
         public int ShipNameMaxCharacters { get; set; }
-        public int PorNameMaxCharacters { get; set; }
+        public int PortNameMaxCharacters { get; set; }
         public int DestinationNameMaxCharacters { get; set; }
         public int DepartureStatusMaxCharacters { get; set; }
         public int TicketPriceIsInt { get; set; }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using Port.Models;
+using Microsoft.Extensions.Options;
+using Port.Configuration;
 
 
 
@@ -11,7 +13,7 @@ namespace Port.Repositories
     public class ShipRepository_SQL : IShipRepository
     {
         private readonly string _connectionString = "Data Source=C:\\Users\\ROKO\\OneDrive - Fakultet elektrotehnike, strojarstva i brodogradnje\\Desktop\\FAKS\\DIS labovi\\rrazov-hw-03\\Port\\SQL\\database.db";
-        //private readonly string _dbDatetimeFormat = "yyyy-MM-dd hh:mm:ss.fff";
+        private readonly string _dbDatetimeFormat = "yyyy-MM-dd hh:mm:ss.fff";
 
         public bool CreateNewShip(Ship ship)
         {
@@ -21,8 +23,8 @@ namespace Port.Repositories
             var command = connection.CreateCommand();
             command.CommandText =
             @"
-                INSERT INTO Ships (ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus)
-                VALUES ($shipName, $portName, $destinationName, $ticketPrice, $departureTime, $arrivalTime, $departureStatus)";
+                INSERT INTO Ships (ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus, TimeStamp)
+                VALUES ($shipName, $portName, $destinationName, $ticketPrice, $departureTime, $arrivalTime, $departureStatus, $timeStamp)";
 
             command.Parameters.AddWithValue("$shipName", ship.ShipName);
             command.Parameters.AddWithValue("$portName", ship.PortName);
@@ -31,6 +33,7 @@ namespace Port.Repositories
             command.Parameters.AddWithValue("$departureTime", ship.DepartureTime);
             command.Parameters.AddWithValue("$arrivalTime", ship.ArrivalTime);
             command.Parameters.AddWithValue("$departureStatus", ship.DepartureStatus);
+            command.Parameters.AddWithValue("$timeStamp", ship.TimeStamp.ToString(_dbDatetimeFormat));
 
 
             int rowsAffected = command.ExecuteNonQuery();
@@ -76,7 +79,7 @@ namespace Port.Repositories
 
             var command = connection.CreateCommand();
             command.CommandText =
-            @"SELECT ID, ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus FROM Ships";
+            @"SELECT ID, ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus, TimeStamp FROM Ships";
 
             using var reader = command.ExecuteReader();
 
@@ -94,6 +97,7 @@ namespace Port.Repositories
                     DepartureTime = reader.GetInt32(5),
                     ArrivalTime = reader.GetInt32(6),
                     DepartureStatus = reader.GetString(7),
+                    TimeStamp = DateTime.ParseExact(reader.GetString(8), _dbDatetimeFormat, null)
                 };
 
                 results.Add(row);
@@ -109,7 +113,7 @@ namespace Port.Repositories
 
             var command = connection.CreateCommand();
             command.CommandText =
-            @"SELECT ID, ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus FROM Ships WHERE ID == $id";
+            @"SELECT ID, ShipName, PortName, DestinationName, TicketPrice, DepartureTime, ArrivalTime, DepartureStatus, TimeStamp FROM Ships WHERE ID == $id";
 
             command.Parameters.AddWithValue("$id", id);
 
@@ -128,7 +132,10 @@ namespace Port.Repositories
                     TicketPrice = reader.GetInt32(4),
                     DepartureTime = reader.GetInt32(5),
                     ArrivalTime = reader.GetInt32(6),
-                    DepartureStatus = reader.GetString(7), 
+                    DepartureStatus = reader.GetString(7),
+                    TimeStamp = DateTime.ParseExact(reader.GetString(5), _dbDatetimeFormat, null)
+
+
                 };
             }
 

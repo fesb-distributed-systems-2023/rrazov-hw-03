@@ -21,7 +21,7 @@ namespace Port.Controllers.DTO
 
         public string? DepartureStatus { get; set; }
 
-        public String? Timestamp { get; set; }
+        public String? TimeStamp { get; set; }
 
 
         public static ShipInfoDTO FromModel(Ship model)
@@ -36,7 +36,7 @@ namespace Port.Controllers.DTO
                 DepartureTime = model.DepartureTime,
                 ArrivalTime = model.ArrivalTime,
                 DepartureStatus = model.DepartureStatus,
-                Timestamp = model.Timestamp.ToLongTimeString()
+                TimeStamp = model.TimeStamp.ToLongTimeString()
             };
         }
     }

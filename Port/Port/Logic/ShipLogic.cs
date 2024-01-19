@@ -41,9 +41,9 @@ namespace Port.Logic
                 throw new UserErrorMessage("Email subject cannot be empty.");
             }
 
-            if (portName.Length > _validationConfiguration.PorNameMaxCharacters)
+            if (portName.Length > _validationConfiguration.PortNameMaxCharacters)
             {
-                throw new UserErrorMessage($"Subject field too long. Exceeded {_validationConfiguration.PorNameMaxCharacters} characters");
+                throw new UserErrorMessage($"Subject field too long. Exceeded {_validationConfiguration.PortNameMaxCharacters} characters");
             }
 
         }
@@ -79,7 +79,7 @@ namespace Port.Logic
         {
             if (int.Equals==null)
             {
-                throw new UserErrorMessage("Departure status field cannot be empty.");
+                throw new UserErrorMessage("Ticket price field cannot be empty.");
             }
 
             if (ticketPrice.GetType()==typeof(string))
@@ -148,7 +148,7 @@ namespace Port.Logic
 
             // Set ship timestamp to current time
             // (use UTC for cross-timezone compatibility)
-            ship.Timestamp = DateTime.UtcNow;
+            ship.TimeStamp = DateTime.UtcNow;
 
             _shipRepository.CreateNewShip(ship);
         }
@@ -163,7 +163,7 @@ namespace Port.Logic
             return _shipRepository.GetShipById(id);
         }
 
-        public IEnumerable<Ship> GetEmails()
+        public IEnumerable<Ship> GetShips()
         {
             return _shipRepository.GetAllShips();
         }
