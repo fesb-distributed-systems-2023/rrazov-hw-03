@@ -33,8 +33,9 @@ namespace Port.Models
         public int ArrivalTime { get; set; }
 
         public string? DepartureStatus { get; set; }
+        public DateTime TimeStamp { get; set; }
 
-           
+
 
     }
 }

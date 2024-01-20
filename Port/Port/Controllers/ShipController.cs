@@ -19,45 +19,56 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Port.Models;
 using Port.Repositories;
+using Port.Filters;
+using Port.Logic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Port.Controllers.DTO;
+using Microsoft.AspNetCore.Http;
+
+
+
 
 namespace Port.Controllers
 {
-    
+    [ErrorFilter]
     [ApiController]
+    [Route("api/[controller]")]
     public class ShipController : ControllerBase
     {
-        private readonly IShipRepository _shipRepository;
+        private readonly IShipLogic _shipLogic;
 
-        public ShipController(IShipRepository shipRepository)
+        public ShipController(IShipLogic shipLogic)
         {
-            _shipRepository = shipRepository;
+            this._shipLogic = shipLogic;
         }
 
-        [HttpPost("/ship/new")]
-        public IActionResult CreateNewShip([FromBody] Ship ship) 
+        [HttpPost]
+        public ActionResult Post([FromBody] NewShipDTO ship) 
         {
-            bool fSuccess = _shipRepository.CreateNewShip(ship);
-
-            if(fSuccess) 
+            if(ship == null)
             {
-                return Ok("New ship created");
+                return BadRequest($"Wrong ship format!");
             }
-            else 
-            {
-                return BadRequest("Something went wrong");
-            }
+
+            _shipLogic.AddNewShip(ship.ToModel());
+
+            return Ok();
         }
 
-        [HttpGet("/ship/all")]
-        public IActionResult GetAllShips() 
+        [HttpGet]
+        public ActionResult<IEnumerable<ShipInfoDTO>> Get() 
         {
-            return Ok(_shipRepository.GetAllShips());   
+            var allShips = _shipLogic.GetShips().Select(x => ShipInfoDTO.FromModel(x));
+            return Ok(allShips);
+                   
         }
 
-        [HttpGet("/ship/{id}")]
-        public IActionResult GetShipById([FromRoute] int id) 
+        [HttpGet("{id}")]
+        public ActionResult<ShipInfoDTO> Get(int id) 
         {
-            var ship = _shipRepository.GetShipById(id);
+            var ship = _shipLogic.GetShipById(id);
 
             if(ship is null) 
             {
@@ -65,20 +76,23 @@ namespace Port.Controllers
             }
             else
             {
-                return Ok(ship);
+                return Ok(ShipInfoDTO.FromModel(ship));
             }
         }
 
-        [HttpDelete("/ship/{id}")]
-        public IActionResult DeleteShip([FromRoute]int id) 
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id) 
         {
-            if(_shipRepository.DeleteShip(id))
+            var ship = _shipLogic.GetShipById(id);
+            if(ship == null)
             {
+                return NotFound($"Could not find ship with id={id}");
                 return Ok($"Deleted ship with id={id}!");
             }
             else
             {
-                return NotFound($"Could not find ship with id={id}");
+                _shipLogic.RemoveShip(id);
+                return Ok($"Deleted ship with id={id}!");
             }
         }
     }
